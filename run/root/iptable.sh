@@ -186,6 +186,9 @@ for lan_network_item in "${lan_network_array[@]}"; do
 
 done
 
+# set policy to nat traffic from opened port @ vpn provider to plex
+iptables -t nat -I PREROUTING -p tcp --dport $PLEX_NAT_PORT_VPN -j REDIRECT --to-ports $PLEX_NAT_PORT
+
 # accept input icmp (ping)
 iptables -A INPUT -p icmp --icmp-type echo-reply -j ACCEPT
 
