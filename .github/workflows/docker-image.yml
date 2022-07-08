@@ -23,4 +23,4 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag sebstr/arch-int-vpn:$(date +%s)
     - name: Docker Push
-      run: docker push sebstr/arch-int-vpn:$(date +%s)
+      run: docker push ${{secrets.DOCKER_USER}}/arch-int-vpn:stable
